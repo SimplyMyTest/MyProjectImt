@@ -7,6 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class HomeworkTest {
+    /*(Модуль 2 задание 4)4. Для усложнённой версии сайта приветствия (https://lm.skillbox.ru/qa_tester/module02/homework1/)
+
+напишите браузерные тесты с использованием JUnit и Selenium WebDriver, применяя привычные вам техники
+ тест-дизайна. Напишите не менее пяти тестов. Поиск элементов на этой странице можно осуществлять по классу
+  или атрибуту name, аналогично рассмотренному примеру в этом уроке.
+     */
     private WebDriver driver;
     @Before
     public  void setUp(){
@@ -113,7 +119,7 @@ public class HomeworkTest {
         Assert.assertEquals("неверный текст при успешной регистрации", "Спасибо за регистрацию!",headerElementResult.getText());
         Assert.assertEquals("неверный email при успешной регистрации", email, emailResultElement.getText());
     }
-    /*  Запишите не менее трёх тестов для сайта кинотеатра.
+    /* (Модуль 3 задание 4) Запишите не менее трёх тестов для сайта кинотеатра.
 
 В первом тесте реализуйте следующий сценарий:
 
@@ -164,7 +170,7 @@ public class HomeworkTest {
         var headerElement2 =  driver.findElement(By.className("header__content"));
         var okElement = driver.findElement(By.id("ok"));
     }
-    /* Запишите тест для сайта книжного магазина. В тесте осуществите переход на сайт, найдите с помощью
+    /* (Модуль 3 задание 3)Запишите тест для сайта книжного магазина. В тесте осуществите переход на сайт, найдите с помощью
      функции findElements
     все элементы <div class="book-info"> и в конце проверьте, что их ровно 15 штук.
      */
@@ -175,7 +181,7 @@ public class HomeworkTest {
         var expectedResult = 15;
         Assert.assertEquals(15, bookElement.size());
     }
-    /*  Запишите тест для сайта книжного магазина http://qajava.skillbox.ru/.
+    /* (Модуль 3 задание 2) Запишите тест для сайта книжного магазина http://qajava.skillbox.ru/.
 
 В тесте сделайте переход на сайт и найдите с помощью функции findElement следующие элементы:
 
@@ -197,7 +203,7 @@ public class HomeworkTest {
       var bookMenuElement = driver.findElement(By.id("genres"));
       var searchElement = driver.findElement(By.id("search"));
   }
-  /*Запишите один тест на негативный сценарий для сайта магазина обуви https://lm.skillbox.ru/qa_tester/module03/practice1/.
+  /*(Модуль 3 задание 1)Запишите один тест на негативный сценарий для сайта магазина обуви https://lm.skillbox.ru/qa_tester/module03/practice1/.
 
 Примените известные вам техники тест-дизайна при составлении сценария. Добавьте к нему позитивный тест
  из практики третьего урока. И вынесите отдельно в setUp и tearDown-методы подготовительную работу по настройке
