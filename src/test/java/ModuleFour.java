@@ -137,7 +137,8 @@ public class ModuleFour {
         var actualResultUp = driver.findElement(resultErrorElementUp).getText();
         Assert.assertEquals("неправильно отображается текст про ошибку", expectedText, actualResultUp);
     }
-    /* 3. Используйте сценарий и тест, как в задании 2, только теперь ищите элементы с помощью By.cssSelector с поиском
+    /* 3. Используйте сценарий и тест, как в задании 2, только теперь ищите элементы с помощью
+     By.cssSelector с поиском
      по тегу и одному или двум классам одновременно.
      */
     private By nameElement3 = By.cssSelector("input.form-input.input-data");
