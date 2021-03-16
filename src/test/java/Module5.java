@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Module5 {
-    /*1. Для сайта книжного магазина составьте, используя CSS:
+    /*1-2. Для сайта книжного магазина составьте, используя CSS:
 
 Локаторы на странице http://qajava.skillbox.ru/index.html для элемента <a href="" test-info="about-us">О магазине</a>. Осуществите поиск только по атрибуту test-info, равному "about-us".
 Локатор на странице http://qajava.skillbox.ru/index.html для всех элементов с тегом a и с атрибутом href с пустым значением, то есть равным "".
@@ -15,17 +15,10 @@ public class Module5 {
 Локатор на странице http://qajava.skillbox.ru/index.html для всех элементов с тегом button и с атрибутом class, начинающимся на "book".
 Локатор на странице http://qajava.skillbox.ru/index.html для всех элементов, у которых атрибут class заканчивается на "main".
 Локатор на странице http://qajava.skillbox.ru/index.html для всех элементов с тегом a и с атрибутом class, содержащим в себе слово "menu".
-2. Для сайта книжного магазина составьте CSS-локаторы:
-
 На странице http://qajava.skillbox.ru/index.html найдите все теги div, которые являются дочерними элементами первого уровня у элемента <footer id="footer">.
 На странице http://qajava.skillbox.ru/index.html найдите любой тег, который расположен сразу после <li id="genres">.
 На странице http://qajava.skillbox.ru/search.html найдите любые теги, которые расположены после <div class="filter-container"> (не обязательно ближайший сосед).
-3. Для сайта клуба любителей весёлых носков http://qajava.skillbox.ru/module05/auth/index.html составьте CSS-локаторы, в которых найдите:
-
-первый тег h1, находящийся сразу на первом уровне вложенности внутри <section class="important-section-block" for="main-header-page">; Используйте поиск по первому child.
-последний тег p, находящийся сразу на первом уровне вложенности внутри <form class="form" id="login-form">; Используйте поиск по child.
-любой тег, который является третьим дочерним элементом первого уровня тега <body>; Используйте поиск по child.
-все элементы с тегом <a>, которые являются первым элементом своего родителя <div class="footer__menuList">. Используйте поиск по type.*/
+*/
     private WebDriver driver;
     @Before
     public  void setUp(){
@@ -48,6 +41,7 @@ public class Module5 {
         var tenLocator = driver.findElement(By.cssSelector("li#genres > a:first-child"));
 
     }
+
     @Test
     public void testSkillboxSearch(){
         driver.navigate().to("http://qajava.skillbox.ru/search.html");
@@ -55,7 +49,16 @@ public class Module5 {
         var sixLocator = driver.findElement(By.cssSelector("head >link[rel='stylesheet'][href*='main']"));
         var nineLocator = driver.findElement(By.cssSelector("div.filter-container > span + *"));
     }
+
     @Test
+    /*
+    3. Для сайта клуба любителей весёлых носков http://qajava.skillbox.ru/module05/auth/index.html составьте CSS-локаторы, в которых найдите:
+
+первый тег h1, находящийся сразу на первом уровне вложенности внутри <section class="important-section-block" for="main-header-page">; Используйте поиск по первому child.
+последний тег p, находящийся сразу на первом уровне вложенности внутри <form class="form" id="login-form">; Используйте поиск по child.
+любой тег, который является третьим дочерним элементом первого уровня тега <body>; Используйте поиск по child.
+все элементы с тегом <a>, которые являются первым элементом своего родителя <div class="footer__menuList">. Используйте поиск по type.
+     */
     public void testSkillboxModule5(){
         driver.navigate().to("http://qajava.skillbox.ru/module05/auth/index.html/");
         var elevenElement = driver.findElement(By.cssSelector("section > h1:first-child"));
