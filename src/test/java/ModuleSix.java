@@ -139,8 +139,9 @@ class НЕ заканчивается на слово "error".
     public void testGetTaxi(){
         driver.navigate().to("https://lm.skillbox.cc/qa_tester/module04/practice1/");
         driver.findElement(By.cssSelector("input[class=form-input]:not([id])"));
-        driver.findElement(By.cssSelector("main *:not([class='error'])"));
+        driver.findElement(By.cssSelector("[class*='form-'] :not([class=form-error])"));
         driver.findElement(By.cssSelector("div.form-inner .form *:nth-of-type(2)"));
+
     }
     /*
     3. Для сайта онлайн-ежедневника составьте один тест, в котором:
@@ -165,9 +166,10 @@ class НЕ заканчивается на слово "error".
         wait.until(ExpectedConditions.presenceOfElementLocated(lightBoxAllNotesLocator));
         var expectedText = "Все записи";
         Assert.assertEquals("не соответствует текст ",expectedText, driver.findElement(lightBoxAllNotesLocator).getText());
-        //Не могу создать эти 2 пункта -пробовал и по родителям и дочерним тегам там абсолютно одинаковые параметры (прошу помочь с решением
-//Проверьте, что у первой записи текст и заголовок равен только что выбранной записи.
-//Кликните по кнопке с иконкой корзины, расположенной в центральной белой части страницы.
+        // не могу сделать следующте пункты: Кликните по кнопке с иконкой корзины, расположенной в центральной белой части страницы.
+        //В разделе «Все записи» выберите самую верхнюю запись (первую).
+        //Кликните по кнопке с иконкой корзины, расположенной в центральной белой части страницы.
+
     }
     //Это практика урока, не домашнее задание
     @Test
