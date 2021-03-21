@@ -161,14 +161,24 @@ class НЕ заканчивается на слово "error".
     @Test
     public void testNoteBook(){
         driver.navigate().to("http://qa.skillbox.ru/module15/bignotes/#/statistic");
-        driver.findElement(By.cssSelector("div.theLayout__menuBody a:first-child")).click();
-        var lightBoxAllNotesLocator =By.cssSelector("div.pageCreate__sidebarHeader.pageCreate__sidebarWrapper");
-        wait.until(ExpectedConditions.presenceOfElementLocated(lightBoxAllNotesLocator));
-        var expectedText = "Все записи";
-        Assert.assertEquals("не соответствует текст ",expectedText, driver.findElement(lightBoxAllNotesLocator).getText());
-        // не могу сделать следующте пункты: Кликните по кнопке с иконкой корзины, расположенной в центральной белой части страницы.
-        //В разделе «Все записи» выберите самую верхнюю запись (первую).
-        //Кликните по кнопке с иконкой корзины, расположенной в центральной белой части страницы.
+        driver.findElement(By.cssSelector("button.articlePreview__link")).click();
+        var notePlansOfMounth = By.cssSelector("div.vb-content > div:nth-child(1) p.articlePreview__title");
+        var expectedTitle = "План на следующий месяц";
+        var notePlansOfText = By.cssSelector("div.vb-content > div:nth-child(1) p.articlePreview__text ");
+        var expectedText = "Прочитать книгу «Искусство цвета».";
+        var vbContent = By.cssSelector("div.vb-content *:nth-of-type(1) button.articlePreview__link");
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(notePlansOfMounth, expectedTitle));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(notePlansOfText, expectedText));
+        Assert.assertEquals("не верно отображается заголовок",expectedTitle, driver.findElement(notePlansOfMounth).getText());
+        Assert.assertEquals("не верно отображается текст",expectedText, driver.findElement(notePlansOfText).getText());
+
+        driver.findElement(By.cssSelector(".pageArticle__buttons >.pageArticle__button:nth-child(2) svg.pageArticle__icon")).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(vbContent));
+        driver.findElement(By.cssSelector("div.articlePreview__buttons > button:nth-child(2) .articlePreview__icon")).click();
+        var pageArticle = By.cssSelector(".page__content.pageArticle__content");
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(pageArticle));
+        Assert.assertEquals("не исчезла запись", driver.findElements(pageArticle).size()==0);
+
 
     }
     //Это практика урока, не домашнее задание
