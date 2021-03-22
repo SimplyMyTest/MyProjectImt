@@ -139,9 +139,7 @@ class НЕ заканчивается на слово "error".
     public void testGetTaxi(){
         driver.navigate().to("https://lm.skillbox.cc/qa_tester/module04/practice1/");
         driver.findElement(By.cssSelector("input[name=time]"));
-        driver.findElement(By.cssSelector(".form.form :nth-child(1).form-row"));
-        driver.findElement(By.cssSelector(".form.form :nth-child(2).form-row"));
-        driver.findElement(By.cssSelector(".form.form :nth-child(3).form-row"));
+        driver.findElement(By.cssSelector("p[class^='form']:not([class$='error'])"));
         driver.findElement(By.cssSelector("label[class=form-label]"));
 
         driver.findElement(By.cssSelector("div.form-inner .form *:nth-of-type(2)"));
