@@ -78,8 +78,29 @@ public class diplomtest {
             wait.until(ExpectedConditions.textToBePresentInElementLocated(postTitleBox, "Заказ получен"));
             var actualText = "Заказ получен";
             Assert.assertEquals("Заказ не получен", actualText, driver.findElement(postTitleBox).getText());
+        }
+        //сценарий поиска Ipad через строку поиска
+        private By searchField = By.cssSelector("[class='search-field']");
+        private By buttonSearch = By.cssSelector("i[class$='fa-search']");
+        private By imgIpad = By.cssSelector("a[href$='ipad-air-2020-64gb-wi-fi/']:not([class])");
 
+        @Test
+        public void pageSearchField_IpadAir(){
+            driver.navigate().to("http://intershop5.skillbox.ru/");
+            var name = "Jazy";
+            var password = "qwerty";
+            var searchProduct = "Ipad";
 
+            driver.findElement(enterButton).click();
+            driver.findElement(fieldName).sendKeys(name);
+            driver.findElement(fieldPassword).sendKeys(password);
+            driver.findElement(buttonEnter).click();
+
+            driver.findElement(searchField).click();
+            driver.findElement(searchField).sendKeys(searchProduct);
+            driver.findElement(buttonSearch).click();
+            wait.until(ExpectedConditions.presenceOfElementLocated(imgIpad));
+           Assert.assertTrue("Товар не обнаружен", driver.findElement(imgIpad).isDisplayed());
 
         }
     }
