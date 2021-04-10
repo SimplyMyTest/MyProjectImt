@@ -101,6 +101,30 @@ public class diplomtest {
             driver.findElement(buttonSearch).click();
             wait.until(ExpectedConditions.presenceOfElementLocated(imgIpad));
            Assert.assertTrue("Товар не обнаружен", driver.findElement(imgIpad).isDisplayed());
+        }
+        //3 Сценарий добавления холодильника в корзину
+        private By bridgeCatalog = By.xpath("(//*[text()='Холодильники'])[2]");
+        private By buttonAddBridgeToBasket = By.xpath("//*[@class='wc-products']//ul//li[2]//div[@class='price-cart']//a");
+        private By buttonBasketInSite = By.cssSelector("[id=menu-item-29]");
+        private By cartBridgeGorenjeInBasket = By.xpath("//div[@class='content-page']//*[@class='woocommerce-cart-form']//tr[2]//td[3]//a");
+        @Test
+    public void pageBridge_addToBasket(){
+            driver.navigate().to("http://intershop5.skillbox.ru/");
+            var name = "Jazy";
+            var password = "qwerty";
+            var nameBridge = "Холодильник GORENJE NRK611CLI, двухкамерный, слоновая кость";
+            driver.findElement(enterButton).click();
+            driver.findElement(fieldName).sendKeys(name);
+            driver.findElement(fieldPassword).sendKeys(password);
+            driver.findElement(buttonEnter).click();
+
+            driver.findElement(buttonCatalog).click();
+            driver.findElement(bridgeCatalog).click();
+            driver.findElement(buttonAddBridgeToBasket).click();
+            driver.findElement(buttonBasketInSite).click();
+
+            wait.until(ExpectedConditions.presenceOfElementLocated(cartBridgeGorenjeInBasket));
+            Assert.assertEquals("Неправильно отображается имя",nameBridge, driver.findElement(cartBridgeGorenjeInBasket).getText());
 
         }
     }
