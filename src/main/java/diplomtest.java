@@ -125,6 +125,33 @@ public class diplomtest {
 
             wait.until(ExpectedConditions.presenceOfElementLocated(cartBridgeGorenjeInBasket));
             Assert.assertEquals("Неправильно отображается имя",nameBridge, driver.findElement(cartBridgeGorenjeInBasket).getText());
+        }
+        private By buttonAccount = By.xpath("(//*[text()='Мой аккаунт'])[1]");
+        private By buttonDetailsAccount = By.xpath("//*[text()='Данные аккаунта']");
+        private By fieldPasswordCurrent = By.cssSelector("*[id=password_current]");
+        private By fieldPasswordOne = By.cssSelector("*[id=password_1]");
+        private By fieldPasswordTwo = By.cssSelector("*[id=password_2]");
+        private By buttonSaveAccountDetails = By.cssSelector("*[name=save_account_details]");
+        private By accountDetailsChanged = By.cssSelector("*[role=alert]");
+    @Test
+    public void pageAccount_changeParole(){
+            driver.navigate().to("http://intershop5.skillbox.ru/");
+            var name = "Jazy";
+            var password = "qwerty";
+            var newPassword = "qwerty123456";
+            driver.findElement(enterButton).click();
+            driver.findElement(fieldName).sendKeys(name);
+            driver.findElement(fieldPassword).sendKeys(password);
+            driver.findElement(buttonEnter).click();
+            driver.findElement(buttonAccount).click();
+            driver.findElement(buttonDetailsAccount).click();
+
+            driver.findElement(fieldPasswordCurrent).sendKeys(password);
+            driver.findElement(fieldPasswordOne).sendKeys(newPassword);
+            driver.findElement(fieldPasswordTwo).sendKeys(newPassword);
+            driver.findElement(buttonSaveAccountDetails).click();
+
+            Assert.assertTrue("сообщение о изменениях сохранены",driver.findElement(accountDetailsChanged).isDisplayed());
 
         }
     }
