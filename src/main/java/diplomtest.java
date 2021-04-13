@@ -129,7 +129,7 @@ public class diplomtest {
         wait.until(ExpectedConditions.presenceOfElementLocated(cartBridgeGorenjeInBasket));
         Assert.assertEquals("Неправильно отображается имя", nameBridge, driver.findElement(cartBridgeGorenjeInBasket).getText());
     }
-
+//сценарий смены пароля
     private By buttonAccount = By.xpath("(//*[text()='Мой аккаунт'])[1]");
     private By buttonDetailsAccount = By.xpath("//*[text()='Данные аккаунта']");
     private By fieldPasswordCurrent = By.cssSelector("*[id=password_current]");
@@ -160,7 +160,7 @@ public class diplomtest {
 
     }
 
-    //сценарий для пагинации на странице каталога
+    //сценарий для пагинации на странице каталога (13.04.21)
     private By pageNumbersTwo = By.xpath("//ul[@class='page-numbers']//li[2]");
     private By imgPageTwo = By.xpath("//*[text()='Page 2']");
 
